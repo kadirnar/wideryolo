@@ -1,0 +1,5 @@
+gdown==4.2.0
+ipython==7.30.1
+Pillow==8.4.0
+sahi==0.8.15
+setuptools==58.0.4
