@@ -13,7 +13,7 @@ def get_requirements():
 
 
 setup(
-    name="wider yolo",
+    name="wideryolo",
     version="0.0.4",
     description="Wider-Yolo Kütüphanesi ile Yüz Tespit Uygulamanı Yap",
     long_description=readme(),
@@ -30,7 +30,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9"
     ],
-    packages=["wider-yolo"],
+    packages=["wideryolo"],
     include_package_data=True,
     install_requires=get_requirements(),
 )
