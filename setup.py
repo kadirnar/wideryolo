@@ -14,7 +14,7 @@ def get_requirements():
 
 setup(
     name="wideryolo",
-    version="0.0.4",
+    version="0.0.5",
     description="Wider-Yolo Kütüphanesi ile Yüz Tespit Uygulamanı Yap",
     long_description=readme(),
     long_description_content_type="text/markdown",
