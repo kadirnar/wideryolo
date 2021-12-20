@@ -4,7 +4,7 @@
 </h1>
 
 <h4>
-<img height="500" src="https://github.com/kadirnar/wider-yolo/blob/main/doc/images/yolov5n_sahi.png"/>
+<img height="500" src="https://raw.githubusercontent.com/kadirnar/wideryolo/main/doc/images/yolov5n_sahi.png"/>
 </h4> 
   
 </div>
@@ -68,7 +68,7 @@ Not: Yeterli Gpu kaynağına sahip olamadığım için wider seti için düşük
 ```
 batch-size: 256, epochs: 5, imgs 320
 ```
-<img height="500" src="https://github.com/kadirnar/wider-yolo/blob/main/doc/images/yolov5sn.jpg"/>
+<img height="500" src="https://raw.githubusercontent.com/kadirnar/wideryolo/main/doc/images/yolov5sn.jpg"/>
  
  
  #### 6. Yolov5 + Sahi Algoritmasını Test Et
@@ -95,7 +95,7 @@ result = get_sliced_prediction(
 result.export_visuals(export_dir="demo_data/")
 Image("demo_data/prediction_visual.png")
 ```
-<img height="500" src="https://github.com/kadirnar/wider-yolo/blob/main/doc/images/yolov5n_sahi.png"/>
+<img height="500" src="https://raw.githubusercontent.com/kadirnar/wideryolo/main/doc/images/yolov5n_sahi.png"/>
 
 Sahi Algoritması ile ilgili Örnek Proje:
 - [yolov5-pytorch-sahi](https://github.com/kadirnar/yolov5-pytorch-sahi)
