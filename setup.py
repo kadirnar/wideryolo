@@ -6,12 +6,6 @@ def readme():
         README = f.read()
     return README
 
-
-def get_requirements():
-    with open("requirements.txt", encoding="utf8") as f:
-        return f.read().splitlines()
-
-
 setup(
     name="wideryolo",
     version="0.0.5",
@@ -32,5 +26,5 @@ setup(
     ],
     packages=["wideryolo"],
     include_package_data=True,
-    install_requires=get_requirements(),
+    install_requires="requirements.txt",
 )
