@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="wideryolo",
-    version="0.0.6",
+    version="0.0.7",
     description="Wider-Yolo Kütüphanesi ile Yüz Tespit Uygulamanı Yap",
     long_description=readme(),
     long_description_content_type="text/markdown",
