@@ -99,7 +99,10 @@ Image("demo_data/prediction_visual.png")
 
 Sahi Algoritması ile ilgili Örnek Proje:
 - [yolov5-pytorch-sahi](https://github.com/kadirnar/yolov5-pytorch-sahi)
+# Yeni Eklenecek Özellikler:
 
+- Veri setini coco formatını dönüştürülecek.
+- Veri setinin dönüştürme işlemleri .sh dosyası ile yapılacak.
 
 Referanslar:
 - [Fatih Cagatay Akyon](https://github.com/fcakyon)
