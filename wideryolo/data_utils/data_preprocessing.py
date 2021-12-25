@@ -1,4 +1,4 @@
-from file_utils import train_path, create_dir
+from wideryolo.file_utils.file_utils import train_path
 import shutil
 
 
