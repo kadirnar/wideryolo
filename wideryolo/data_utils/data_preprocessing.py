@@ -1,4 +1,4 @@
-from wideryolo.file_utils.file_utils import train_path
+from wideryolo.file_utils.file import *
 import shutil
 
 

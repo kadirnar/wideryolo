@@ -31,10 +31,6 @@ def move(src, dst):
 def file_move(root_dir, move_dir):
     for file in glob.glob(root_dir + '/*'):
         for main_file in glob.glob(file + '/*'):
-            print(main_file)
             shutil.move(main_file, move_dir)
 
 
-def train_path(old_train_dir, new_train_dir):
-    create_dir(new_train_dir)
-    file_move(old_train_dir, new_train_dir)
