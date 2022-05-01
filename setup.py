@@ -2,9 +2,10 @@ from setuptools import setup
 
 
 def readme():
-    with open('README.md') as f:
+    with open("README.md") as f:
         README = f.read()
     return README
+
 
 setup(
     name="wideryolo",
@@ -22,7 +23,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9"
+        "Programming Language :: Python :: 3.9",
     ],
     packages=["wideryolo"],
     include_package_data=True,

@@ -1,4 +1,9 @@
-from wideryolo.data_utils.data_preprocessing import train_file, val_file, yolo_image_file, yolo_label_file
+from wideryolo.data_utils.data_preprocessing import (
+    train_file,
+    val_file,
+    yolo_image_file,
+    yolo_label_file,
+)
 import shutil
 
 train_path = train_file()

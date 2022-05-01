@@ -40,15 +40,9 @@ datasets/
 
 Not: WIDER_train_annotations ve WIDER_val_annotations klasörleri oluşturmanıza gerek yoktur.
 
-#### 3. Wider Veri Setini Voc Xml Formatına Çevir
+#### 3. Wider Veri Setini Voc Yolo Formatına Çevir
 ```
-python ./wider_to_xml.py -ap ./wider_data/wider_face_split/wider_face_train_bbx_gt.txt -tp ./wider_data/WIDER_train_annotations/ -ip ./wider_data/WIDER_train/images/
-python ./wider_to_xml.py -ap ./wider_data/wider_face_split/wider_face_val_bbx_gt.txt -tp ./wider_data/WIDER_val_annotations/ -ip ./wider_data/WIDER_val/images/
-```
-#### 4. Voc Xml Veri Setini Yolo Formatına Çevir
-```
-python ./xml_to_yolo --path ./wider_data/WIDER_train_annotations/
-python ./xml_to_yolo --path ./wider_data/WIDER_val_annotations/
+bash wider_to_yolo.sh
 ```
 #### 5. Yolo Modelini Eğit
 ```
