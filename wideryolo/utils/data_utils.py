@@ -1,5 +1,6 @@
-from wideryolo.file_utils.file_utils import train_path
 import shutil
+
+from wideryolo.utils.file_utils import create_dir, train_path
 
 
 def train_file():

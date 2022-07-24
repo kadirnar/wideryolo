@@ -1,8 +1,15 @@
-import xml.etree.ElementTree as ET
-from PIL import Image
-import argparse
-from xml.dom import minidom
 import os
+import xml.etree.ElementTree as ET
+from xml.dom import minidom
+
+from PIL import Image
+
+
+class WiderToXML:
+    def __init__(self, annotationsPath, xmlPath, imagePath):
+        self.annotationsPath = annotationsPath
+        self.xmlPath = xmlPath
+        self.imagePath = imagePath
 
 
 def createAnnotationPascalVocTree(folder, basename, path, width, height):
@@ -34,52 +41,37 @@ def createObjectPascalVocTree(xmin, ymin, xmax, ymax):
     return ET.ElementTree(obj)
 
 
-def parseImFilename(imFilename, imPath):
-    im = Image.open(os.path.join(imPath, imFilename))
+def parseImFilename(self, imFilename):
+    im = Image.open(os.path.join(self.imagePath, imFilename))
     folder, basename = imFilename.split("/")
     width, height = im.size
     return folder, basename, imFilename, str(width), str(height)
 
 
-def convertWFAnnotations(annotationsPath, targetPath, imPath, fixPath):
-    with open(annotationsPath) as f:
+def convertWFAnnotations(self):
+    with open(self.annotationsPath) as f:
         while True:
             imFilename = f.readline().strip()
-
             if len(imFilename.split(" ")) > 1:
                 continue
 
             if imFilename:
-                folder, basename, path, width, height = parseImFilename(
-                    imFilename, imPath
-                )
-                ann = createAnnotationPascalVocTree(
-                    folder, basename, os.path.join(fixPath, path), width, height
-                )
+                folder, basename, path, width, height = parseImFilename(imFilename, self.imagePath)
+                ann = createAnnotationPascalVocTree(folder, basename, os.path.join(self.imagePath, path), width, height)
                 nbBndboxes = f.readline()
                 i = 0
-
                 while i < int(nbBndboxes):
                     i = i + 1
-                    x1, y1, w, h, _, _, _, _, _, _ = [
-                        int(i) for i in f.readline().split()
-                    ]
+                    x1, y1, w, h, _, _, _, _, _, _ = [int(i) for i in f.readline().split()]
                     ann.getroot().append(
-                        createObjectPascalVocTree(
-                            str(x1), str(y1), str(x1 + w), str(y1 + h)
-                        ).getroot()
+                        createObjectPascalVocTree(str(x1), str(y1), str(x1 + w), str(y1 + h)).getroot()
                     )
-
-                if not os.path.exists(targetPath):
-                    os.makedirs(targetPath)
-                annFilename = os.path.join(targetPath, basename.replace(".jpg", ".xml"))
+                if not os.path.exists(self.xmlPath):
+                    os.makedirs(self.xmlPath)
+                annFilename = os.path.join(self.xmlPath, basename.replace(".jpg", ".xml"))
                 o = open(annFilename, "wb")
                 o.write(
-                    bytes(
-                        minidom.parseString(ET.tostring(ann.getroot()))
-                        .toprettyxml(indent="   ")
-                        .encode("utf-8")
-                    )
+                    bytes(minidom.parseString(ET.tostring(ann.getroot())).toprettyxml(indent="   ").encode("utf-8"))
                 )
                 o.close()
                 print("{} => {}".format(basename, annFilename))
@@ -90,30 +82,8 @@ def convertWFAnnotations(annotationsPath, targetPath, imPath, fixPath):
 
 
 if __name__ == "__main__":
-
-    PARSER = argparse.ArgumentParser()
-    PARSER.add_argument(
-        "-ap",
-        "--annotations-path",
-        help='the annotations file path. ie:"./wider_face_split/wider_face_train_bbx_gt.txt".',
-    )
-    PARSER.add_argument(
-        "-tp",
-        "--target-path",
-        help="the target directory path where XML files will be copied.",
-    )
-    PARSER.add_argument(
-        "-ip",
-        "--images-path",
-        help='the images directory path. ie:"./WIDER_train/images"',
-    )
-    PARSER.add_argument("-fp", "--fix-images-path", help="annotation base path replace")
-    ARGS = vars(PARSER.parse_args())
-    if not ARGS["fix_images_path"]:
-        ARGS["fix_images_path"] = ARGS["images_path"]
-    convertWFAnnotations(
-        ARGS["annotations_path"],
-        ARGS["target_path"],
-        ARGS["images_path"],
-        ARGS["fix_images_path"],
+    WiderToXML(
+        annotationsPath="wider_face_split/wider_face_train_bbx_gt.txt",
+        xmlPath="wider_face_split/wider_face_train_bbx_gt",
+        imagePath="wider_face_split/WIDER_train/images",
     )

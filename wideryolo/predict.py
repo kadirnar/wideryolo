@@ -1,7 +1,6 @@
 from sahi.model import Yolov5DetectionModel
 from sahi.predict import get_sliced_prediction
 
-
 detection_model = Yolov5DetectionModel(
     model_path="last.pt",
     confidence_threshold=0.3,
