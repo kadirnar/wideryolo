@@ -98,6 +98,14 @@ Sahi Algoritması ile ilgili Örnek Proje:
 - Veri setini coco formatını dönüştürülecek.
 - Veri setinin dönüştürme işlemleri .sh dosyası ile yapılacak.
 
+### Contributing
+Before opening a PR:
+- Reformat with black and isort:
+```bash
+black . --config pyproject.toml
+isort .
+```
+
 Referanslar:
 - [Fatih Cagatay Akyon](https://github.com/fcakyon)
 - [Alexis Kofman](https://github.com/akofman/wider-face-pascal-voc-annotations)<br/>
